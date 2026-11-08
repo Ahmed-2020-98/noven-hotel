@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+
+@source '../../storage/framework/views/*.php';
+@source '../views';
+
+/* NOVEN brand tokens — from NOVEN-Brand/colors/tokens.css (logo colors only). */
+@theme {
+    --color-green: #0f5247;
+    --color-green-deep: #0b3d35;
+    --color-green-mist: #f2f6f5;
+    --color-green-line: #d9e5e2;
+    --color-muted: #46706a;
+    --color-gold: #d4af37;
+    --color-gold-text: #7a5f14;
+    --color-gold-soft: #e2c565;
+
+    --font-sans: 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-display-ar: 'Amiri', 'Times New Roman', serif;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        @apply bg-white font-sans text-green-deep antialiased;
+    }
+
+    h1, h2, h3 {
+        font-family: var(--font-display);
+        @apply font-semibold tracking-tight;
+    }
+
+    :lang(ar) h1, :lang(ar) h2, :lang(ar) h3 {
+        font-family: var(--font-display-ar);
+        @apply font-bold tracking-normal;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-gold;
+    }
+}
+
+@utility btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+@layer components {
+    .container-x {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .btn-primary {
+        @apply btn bg-green text-white hover:bg-green-deep;
+    }
+
+    .btn-gold {
+        @apply btn bg-gold text-green-deep hover:bg-gold-soft;
+    }
+
+    .btn-outline {
+        @apply btn border border-green/25 text-green hover:border-green hover:bg-green-mist;
+    }
+
+    .btn-ghost-light {
+        @apply btn border border-white/40 text-white hover:bg-white/10;
+    }
+
+    .field {
+        @apply block w-full rounded-xl border border-green-line bg-white px-4 py-3 text-base text-green-deep placeholder:text-muted/60 focus:border-green focus:ring-2 focus:ring-green/15 focus:outline-none;
+    }
+
+    .label {
+        @apply mb-1.5 block text-sm font-medium text-green-deep;
+    }
+
+    .eyebrow {
+        @apply text-xs font-semibold tracking-[0.2em] text-gold-text uppercase;
+    }
+
+    .pattern-dark {
+        background-color: var(--color-green);
+        background-image: url('/brand/pattern/noven-pattern-tile-dark.svg');
+        background-size: 140px;
+    }
+
+    .pattern-light {
+        background-color: var(--color-green-mist);
+        background-image: url('/brand/pattern/noven-pattern-tile-light.svg');
+        background-size: 140px;
+    }
+
+    .prose-noven {
+        @apply space-y-4 leading-8 text-green-deep/90;
+    }
+
+    .prose-noven ul {
+        @apply list-disc space-y-2 ps-6;
+    }
+
+    .prose-noven ol {
+        @apply list-decimal space-y-2 ps-6;
+    }
+
+    .prose-noven a {
+        @apply text-green underline;
+    }
+
+    .divider-gold {
+        @apply mx-auto flex items-center justify-center gap-3 text-gold;
+    }
+
+    .divider-gold::before,
+    .divider-gold::after {
+        content: '';
+        @apply h-px w-12 bg-gold/70;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

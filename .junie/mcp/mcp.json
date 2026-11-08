@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/ahmedgamal/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Users/ahmedgamal/Desktop/My Computer/AhmedGamal/advarisment/haraj/clients/240-noven hotel/code1-noven/noven/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}
